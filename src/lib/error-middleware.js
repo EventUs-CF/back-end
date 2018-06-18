@@ -33,5 +33,6 @@ export default (error, request, response, next) => { // eslint-disable-line no-u
   }
 
   logger.log(logger.ERROR, 'Responding with 500 error code');
+  console.log(error);
   return response.sendStatus(500);
 };

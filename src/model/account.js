@@ -52,7 +52,7 @@ function createToken() {
     .then((account) => {
       return jsonWebToken.sign(
         { tokenSeed: account.tokenSeed },
-        process.env.CAT_CLOUD_SECRET,
+        process.env.SECRET,
       );
     });
 }
@@ -74,3 +74,5 @@ Account.create = (username, email, password) => {
       }).save();
     });
 };
+
+export default Account;

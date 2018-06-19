@@ -9,10 +9,10 @@ const userRouter = new Router();
 const jsonParser = json();
 
 userRouter.get('/user', bearerAuthMiddleware, (request, response, next) => {
+  console.log(request.body);
   User.findOne({ owner: request.account._id })
     .then((user) => {
       if (!user) throw new HttpError(404, '__ERROR__: user not found');
-      // return or not?
       return response.json(user);
     })
     .catch(next);
@@ -25,9 +25,8 @@ userRouter.put('/user/:id', bearerAuthMiddleware, jsonParser, (request, response
 });
 
 userRouter.post('/user', bearerAuthMiddleware, jsonParser, (request, response, next) => {
-  // if('not exist throw 400')
   return new User({
-    account: request.account._id,
+    owner: request.account._id,
     username: request.account.username,
     email: request.account.email,
     bio: request.body.bio,

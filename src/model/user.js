@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const userSchema = mongoose.Schema({
-  account: { 
+  owner: { 
     type: mongoose.Schema.Types.ObjectId,
     required: true, 
     unique: true, 
@@ -14,9 +14,9 @@ const userSchema = mongoose.Schema({
     type: String, 
     required: true, 
   },
-  // avatar: { 
-  //   type: String, 
-  // },
+  avatar: { 
+    type: String, 
+  },
   bio: { 
     type: String,
   },

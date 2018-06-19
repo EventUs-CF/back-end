@@ -1,6 +1,7 @@
 import faker from 'faker';
 import { pCreateAccountMock, pRemoveAccountMock } from './account-mock';
 import User from '../../model/user';
+import Account from '../../model/account';
 
 const pCreateUserMock = () => {
   return pCreateAccountMock()
@@ -26,4 +27,6 @@ const pRemoveUserMock = () => Promise.all([
   pRemoveAccountMock(),
 ]);
 
-export default { pCreateUserMock, pRemoveUserMock };
+// const pRemoveUserMock = () => Account.remove({}); 
+
+export { pCreateUserMock, pRemoveUserMock };

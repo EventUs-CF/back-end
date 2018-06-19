@@ -25,6 +25,7 @@ userRouter.put('/user/:id', bearerAuthMiddleware, jsonParser, (request, response
 });
 
 userRouter.post('/user', bearerAuthMiddleware, jsonParser, (request, response, next) => {
+  // if('not exist throw 400')
   return new User({
     account: request.account._id,
     username: request.account.username,

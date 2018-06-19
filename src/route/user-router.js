@@ -18,6 +18,14 @@ userRouter.get('/user', bearerAuthMiddleware, (request, response, next) => {
     .catch(next);
 });
 
+userRouter.get('user/all', (request, response, next) => {
+  User.find()
+    .then((users) => {
+      return response.json(users);
+    })
+    .catch(next);
+});
+
 userRouter.put('/user/:id', bearerAuthMiddleware, jsonParser, (request, response, next) => {
   User.update(request)
     .then(response.json)

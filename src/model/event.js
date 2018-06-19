@@ -5,7 +5,7 @@ const eventSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  date: {
+  startDate: {
     type: String,
     required: true,
   },
@@ -18,7 +18,8 @@ const eventSchema = mongoose.Schema({
   },
   users: [
     {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'user',
     },
   ],
   cost: {
@@ -45,6 +46,10 @@ const eventSchema = mongoose.Schema({
       type: String,
     },
   ],
+  createdOn: {
+    type: Date,
+    default: () => new Date(),
+  },
 });
 
 const EventModal = module.exports = mongoose.model('event', eventSchema);

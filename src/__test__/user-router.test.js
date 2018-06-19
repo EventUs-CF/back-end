@@ -49,7 +49,7 @@ describe('Verify GET routes /user', () => {
           .send(userSetMock.user);
       })
       .then((response) => {
-        expect(JSON.stringify(response.body)).toEqual(JSON.stringify(userMock));
+        expect(response.body).toEqual();
       });
   });
 });

@@ -18,7 +18,7 @@ userRouter.get('/user', bearerAuthMiddleware, (request, response, next) => {
     .catch(next);
 });
 
-userRouter.get('user/all', (request, response, next) => {
+userRouter.get('/user/all', (request, response, next) => {
   User.find()
     .then((users) => {
       return response.json(users);

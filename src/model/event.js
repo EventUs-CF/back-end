@@ -18,7 +18,7 @@ const eventSchema = mongoose.Schema({
   },
   users: [
     {
-      type: Array,
+      type: String,
     },
   ],
   cost: {
@@ -31,18 +31,18 @@ const eventSchema = mongoose.Schema({
   },
   keywords: [
     {
-      type: Array,
+      type: String,
       required: true,
     },
   ],
   permissions: [
     {
-      type: Array,
+      type: String,
     },
   ],
   threads: [
     {
-      type: Array,
+      type: String,
     },
   ],
 });

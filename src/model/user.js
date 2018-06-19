@@ -43,7 +43,8 @@ function create(request) {
       request.account.user = user._id;
       return request.account.save()
         .then(() => user);
-    });
+    })
+    .catch(error => new Error(error));
 }
 function update(request) {
   // for AWS and Avatar Picture

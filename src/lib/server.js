@@ -8,19 +8,21 @@ import loggerMiddleware from './logger-middleware';
 import errorMiddleWare from './error-middleware';
 import authRouter from '../route/auth-router';
 import userRouter from '../route/user-router';
+import eventRouter from '../route/event-router';
 
 const app = express();
 let server = null;
-app.use(cors());
-// app.use(cors({
-//   origin: process.env.CORS_ORIGINS.split(' '),
-//   credentials: true,
-// }));
+// app.use(cors());
+app.use(cors({
+  origin: process.env.CORS_ORIGINS.split(' '),
+  credentials: true,
+}));
 
 // #1 in chain
 app.use(loggerMiddleware);
 app.use(authRouter);
 app.use(userRouter);
+app.use(eventRouter);
 // chain 2
 app.all('*', (request, response) => {
   logger.log(logger.INFO, 'SERVER: Returning a 404 from the catch-all/default route');

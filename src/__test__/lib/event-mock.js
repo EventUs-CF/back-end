@@ -13,13 +13,13 @@ const pCreateEventMock = () => {
         startDate: faker.date.future(),
         location: faker.address.streetAddress(),
         image: faker.image.imageUrl(),
+        description: faker.lorem.words(20),
         attendees: [data.user._id],
         cost: `$ ${faker.random.number(13)}`,
         runNumber: faker.random.number(7),
         keywords: [faker.lorem.words(5)],
         permissions: [faker.lorem.words(3)],
         threads: [faker.lorem.word()],
-        createdOn: faker.date.future(),
         createdBy: data.user._id,
       }).save();
     })

@@ -50,8 +50,14 @@ eventRouter.post('/events', bearerAuth, jsonParser, (request, response, next) =>
 
 eventRouter.put('/events/:id', bearerAuth, jsonParser, (request, response, next) => {
   const options = { new: true, runValidators: true };
-  return EventModel.findById(request.params.id, request.body, options) // ?destructure req.body
-    .then(response.json)
+  return EventModel.findByIdAndUpdate(
+    request.params.id, 
+    { $set: request.body }, 
+    options,
+  )
+    .then((updatedEvent) => {
+      return response.json(updatedEvent);
+    })
     .catch(next);
 });
 

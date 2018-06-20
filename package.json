@@ -29,7 +29,8 @@
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jest": "^21.15.1",
     "jest": "^23.1.0",
-    "superagent": "^3.8.3"
+    "superagent": "^3.8.3",
+    "uuid": "^3.2.1"
   },
   "dependencies": {
     "aws-sdk": "^2.237.1",

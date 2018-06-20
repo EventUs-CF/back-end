@@ -6,7 +6,7 @@ const eventSchema = mongoose.Schema({
     required: true,
   },
   startDate: {
-    type: String,
+    type: Date,
     required: true,
   },
   location: {
@@ -55,7 +55,9 @@ const eventSchema = mongoose.Schema({
     required: true,
     ref: 'user',
   },
+}, {
+  usePushEach: true,
 });
 
-const EventModal = module.exports = mongoose.model('event', eventSchema);
-export default EventModal;
+const EventModel = module.exports = mongoose.model('event', eventSchema);
+export default EventModel;

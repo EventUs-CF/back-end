@@ -19,6 +19,8 @@ describe('AUTH Router', () => {
         password: 'password',
       })
       .then((response) => {
+        const EventUsToken = response.headers['set-cookie'][0];
+        expect(EventUsToken.split('=')[1].split(';')[0]).toEqual(response.body.token);
         expect(response.status).toEqual(200);
         expect(response.body.token).toBeTruthy();
       });
@@ -45,7 +47,19 @@ describe('AUTH Router', () => {
         })
         .then((response) => {
           expect(response.status).toEqual(200);
-          expect(response.body.token).toBeTruthy();
+          expect(response.body.token).toBeTruthy(); 
+          const EventUsToken = response.headers['set-cookie'][0];
+          expect(EventUsToken.split('=')[1].split(';')[0]).toEqual(response.body.token);
+        });
+    });
+    test('GET /login should return status 401 if bad credetials', () => {
+      return pCreateAccountMock()
+        .then((mock) => {
+          return superagent.get(`${apiURL}/login`)
+            .auth(mock.request.username, 'password');
+        })
+        .catch((response) => {
+          expect(response.status).toEqual(401);
         });
     });
   });

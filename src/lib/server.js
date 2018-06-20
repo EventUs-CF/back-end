@@ -3,6 +3,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import logger from './logger';
 import loggerMiddleware from './logger-middleware';
 import errorMiddleWare from './error-middleware';
@@ -17,6 +18,7 @@ app.use(cors({
   origin: process.env.CORS_ORIGINS.split(' '),
   credentials: true,
 }));
+app.use(cookieParser());
 
 // #1 in chain
 app.use(loggerMiddleware);

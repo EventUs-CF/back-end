@@ -22,7 +22,8 @@ authRouter.post('/signup', jsonParser, (request, response, next) => {
     })
     .then((token) => {
       logger.log(logger.INFO, 'AUTH - Returning a 200 status and a token');
-      return response.json({ token });
+      response.cookie('EventUs-Token', token, { maxAge: 900000 });
+      response.json({ token });
     })
     .catch(next);
 });
@@ -33,7 +34,11 @@ authRouter.get('/login', basicAuthMiddleware, (request, response, next) => {
   }
 
   return request.account.createToken()
-    .then(token => response.json({ token }))
+    .then((token) => {
+      const cookieOptions = { maxAge: 800000 };
+      response.cookie('EventUs-Token', token, cookieOptions);
+      response.json({ token });
+    })
     .catch(next);
 });
 

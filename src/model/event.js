@@ -16,7 +16,7 @@ const eventSchema = mongoose.Schema({
   image: {
     type: String,
   },
-  users: [
+  attendees: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'user',
@@ -49,6 +49,11 @@ const eventSchema = mongoose.Schema({
   createdOn: {
     type: Date,
     default: () => new Date(),
+  },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'user',
   },
 });
 

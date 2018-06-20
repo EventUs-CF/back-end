@@ -1,5 +1,4 @@
 import faker from 'faker';
-import uuid from 'uuid/v4';
 import { pCreateUserMock, pRemoveUserMock } from './user-mock';
 import { pRemoveAccountMock } from './account-mock';
 import EventModel from '../../model/event';

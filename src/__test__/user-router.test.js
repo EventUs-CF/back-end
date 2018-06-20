@@ -55,6 +55,29 @@ describe('Verify GET route /user', () => {
         expect(response.body.email).toEqual(userMock.user.email.toString());
       });
   });
+  test('GET - /user should get 400 status and authorization header required', () => {
+    return pCreateUserMock()
+      .then((userSetMock) => {
+        return superagent.get(`${apiURL}/user`)
+          .set('Content-Type', 'application/json') 
+          .send(userSetMock.user);
+      })
+      .catch((response) => {
+        expect(response.status).toEqual(400);
+      });
+  });
+  test('GET - /user should get 400 status and token required', () => {
+    return pCreateUserMock()
+      .then((userSetMock) => {
+        return superagent.get(`${apiURL}/user`)
+          .set('Content-Type', 'application/json')
+          .set('Authorization', 'Bearer') 
+          .send(userSetMock.user);
+      })
+      .catch((response) => {
+        expect(response.status).toEqual(400);
+      });
+  });
 });
 describe('Verify PUT route /user', () => {
   beforeAll(startServer);

@@ -16,6 +16,9 @@ const eventSchema = mongoose.Schema({
   image: {
     type: String,
   },
+  description: {
+    type: String,
+  },
   attendees: [
     {
       type: mongoose.Schema.Types.ObjectId,

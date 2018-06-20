@@ -29,15 +29,17 @@ eventRouter.get('/events/:id', (request, response, next) => {
 eventRouter.post('/events', bearerAuth, jsonParser, (request, response, next) => {
   return new EventModel({
     title: request.body.title,
-    date: request.body.date,
+    startDate: request.body.startDate,
     location: request.body.location,
-    // image: request.body.image,
-    // users: request.body.users,
+    image: request.body.image,
+    attendees: request.body.attendees,
     cost: request.body.cost,
     runNumber: request.body.runNumber,
     keywords: request.body.keywords,
-    // permissions: request.body.permissions,
-    // threads: request.body.threads,
+    permissions: request.body.permissions,
+    threads: request.body.threads,
+    createdOn: request.body.createdOn,
+    createdBy: request.body.createdBy,
   }).save()
     .then((item) => {
       logger.log(logger.INFO, 'Returning a 200 and a new Event');

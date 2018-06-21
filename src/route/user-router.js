@@ -3,7 +3,6 @@ import HttpError from 'http-errors';
 import { json } from 'body-parser';
 import logger from '../lib/logger';
 import User from '../model/user';
-import Account from '../model/account';
 import bearerAuthMiddleware from '../lib/bearer-auth';
 
 const userRouter = new Router();
@@ -20,17 +19,11 @@ userRouter.get('/user', bearerAuthMiddleware, (request, response, next) => {
 
 userRouter.put('/user/:id', bearerAuthMiddleware, jsonParser, (request, response, next) => {
   const options = { new: true, runValidators: true };
-  return User.findById(request.params.id)
-    .then((user) => {
-      return Account.findByIdAndUpdate(user.owner, { $set: request.body }, options);
+  return User.findByIdAndUpdate(request.params.id, { $set: request.body }, options)
+    .then((updatedUser) => {
+      return response.json(updatedUser);
     })
-    .then(() => {
-      return User.findByIdAndUpdate(request.params.id, { $set: request.body }, options)
-        .then((updatedUser) => {
-          return response.json(updatedUser);
-        })
-        .catch(next);
-    });
+    .catch(next);
 });
 
 userRouter.post('/user', bearerAuthMiddleware, jsonParser, (request, response, next) => {

@@ -14,7 +14,6 @@ authRouter.post('/signup', jsonParser, (request, response, next) => {
   if (!request.body.username || !request.body.email || !request.body.password) {
     return next(new HttpError(400, '__ERROR__ username, email, and password required to create an account'));
   }
-
   return Account.create(request.body.username, request.body.email, request.body.password)
     .then((user) => {
       logger.log(logger.INFO, 'AUTH - Creating Token');

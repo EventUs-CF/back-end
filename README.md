@@ -1,8 +1,7 @@
 # EventUs Back-end
 
-![EventUs Image](src/image.jpg)
+![EventUs Image](src/assets/eventUs.jpg)
 
-[![Build Status](link to travis)](link to travis)
 ![Coverage](https://img.shields.io/badge/coverage-87%25-brightgreen.svg?longCache=true&style=plastic)
 ![Node](https://img.shields.io/badge/node-v8.9.4-blue.svg?longCache=true&style=plastic)
 ![npm](https://img.shields.io/badge/npm-v6.0.0-blue.svg?longCache=true&style=plastic)
@@ -17,7 +16,7 @@ EventUs API is available at `https://github.com/EventUs-CF`.
 
 ## Schema Structure 
 
-![schema diagram](img here)
+![schema diagram](src/assets/eventUs-entity-relationships.png)
 
 ### Account Schema
 - Fields that are required and unique are 'username', 'email' 

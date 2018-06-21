@@ -7,7 +7,7 @@ const eventSchema = mongoose.Schema({
   },
   startDate: {
     type: Date,
-    required: true,
+    // required: true,
   },
   location: {
     type: String,
@@ -31,12 +31,12 @@ const eventSchema = mongoose.Schema({
   },
   runNumber: {
     type: Number,
-    required: true,
+    // required: true,
   },
   keywords: [
     {
       type: String,
-      required: true,
+      // required: true,
     },
   ],
   permissions: [

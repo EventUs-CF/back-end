@@ -29,8 +29,11 @@ userRouter.put('/user/:id', bearerAuthMiddleware, jsonParser, (request, response
 userRouter.post('/user', bearerAuthMiddleware, jsonParser, (request, response, next) => {
   return new User({
     owner: request.account._id,
-    username: request.account.username,
     email: request.account.email,
+    username: request.account.username,
+    firstName: request.body.firstName,
+    lastName: request.body.lastName,
+    avatar: request.body.avatar,
     bio: request.body.bio,
   }).save()
     .then((user) => {

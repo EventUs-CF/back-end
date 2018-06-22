@@ -58,8 +58,6 @@ const eventSchema = mongoose.Schema({
     required: true,
     ref: 'user',
   },
-}, {
-  usePushEach: true,
 });
 
 const EventModel = module.exports = mongoose.model('event', eventSchema);

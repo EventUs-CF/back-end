@@ -27,6 +27,7 @@ eventRouter.get('/events/:id', (request, response, next) => {
 });
 
 eventRouter.post('/events', bearerAuth, jsonParser, (request, response, next) => {
+  console.log(response.body);
   return new EventModel({
     title: request.body.title,
     startDate: request.body.startDate,

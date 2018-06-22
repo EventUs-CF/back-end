@@ -31,8 +31,9 @@ userRouter.post('/user', bearerAuthMiddleware, jsonParser, (request, response, n
     owner: request.account._id,
     email: request.account.email,
     username: request.account.username,
-    firstName: request.account.firstName,
-    lastName: request.account.lastName,
+    firstName: request.body.firstName,
+    lastName: request.body.lastName,
+    avatar: request.body.avatar,
     bio: request.body.bio,
   }).save()
     .then((user) => {

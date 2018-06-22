@@ -38,6 +38,8 @@ eventRouter.post('/events', bearerAuth, jsonParser, (request, response, next) =>
     runNumber: request.body.runNumber,
     keywords: request.body.keywords,
     permissions: request.body.permissions,
+    description: request.body.description,
+    time: request.body.time,
     threads: request.body.threads,
     createdOn: request.body.createdOn,
     createdBy: request.body.createdBy,

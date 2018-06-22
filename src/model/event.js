@@ -13,6 +13,9 @@ const eventSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  time: {
+    type: String,
+  },
   image: {
     type: String,
   },

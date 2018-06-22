@@ -5,20 +5,27 @@ const eventSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  date: {
-    type: String,
-    required: true,
+  startDate: {
+    type: Date,
+    // required: true,
   },
   location: {
     type: String,
     required: true,
   },
+  time: {
+    type: String,
+  },
   image: {
     type: String,
   },
-  users: [
+  description: {
+    type: String,
+  },
+  attendees: [
     {
-      type: Array,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'user',
     },
   ],
   cost: {
@@ -27,25 +34,34 @@ const eventSchema = mongoose.Schema({
   },
   runNumber: {
     type: Number,
-    required: true,
+    // required: true,
   },
   keywords: [
     {
-      type: Array,
-      required: true,
+      type: String,
+      // required: true,
     },
   ],
   permissions: [
     {
-      type: Array,
+      type: String,
     },
   ],
   threads: [
     {
-      type: Array,
+      type: String,
     },
   ],
+  createdOn: {
+    type: Date,
+    default: () => new Date(),
+  },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'user',
+  },
 });
 
-const EventModal = module.exports = mongoose.model('event', eventSchema);
-export default EventModal;
+const EventModel = module.exports = mongoose.model('event', eventSchema);
+export default EventModel;

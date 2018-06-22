@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const userSchema = mongoose.Schema({
-  account: { 
+  owner: { 
     type: mongoose.Schema.Types.ObjectId,
     required: true, 
     unique: true, 
@@ -14,46 +14,18 @@ const userSchema = mongoose.Schema({
     type: String, 
     required: true, 
   },
-  // avatar: { 
-  //   type: String, 
-  // },
+  firstName: {
+    type: String,
+  },
+  lastName: {
+    type: String,
+  },
+  avatar: { 
+    type: String, 
+  },
   bio: { 
     type: String,
   },
 });
-
-const User = mongoose.model('user', userSchema);
-
-// this method is for finding other users
-function fetchOne(request) {
-  return this.findById(request.params.id)
-    .then((user) => {
-      if (!user) throw new Error('__ERROR__: user not found');
-      return user;
-    });
-}
-function create(request) {
-  return new User({
-    owner: request.account._id,
-    username: request.account.username, 
-    email: request.account.email,
-    bio: request.body.bio,
-  }).save()
-    .then((user) => {
-      request.account.user = user._id;
-      return request.account.save()
-        .then(() => user);
-    });
-}
-function update(request) {
-  // for AWS and Avatar Picture
-  // if (request.files && request.files[0]) return this.updateuserWithPhoto(request);
-  const options = { new: true, runValidators: true };
-  return this.findByIdAndUpdate(request.params.id, { bio: request.body.bio }, options);
-}
-
-userSchema.methods.fetchOne = fetchOne;
-userSchema.methods.create = create;
-userSchema.methods.update = update;
 
 export default mongoose.model('user', userSchema);

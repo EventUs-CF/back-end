@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --coverage --forceExit --runInBand",
     "dbon": "mkdir -p ./db && mongod --dbpath ./db",
-    "dboff": "killall mongod"
+    "dboff": "killall mongod",
+    "start": "node index.js"
   },
   "jest": {
     "setupFiles": [
@@ -22,12 +23,14 @@
     "babel-eslint": "^8.2.3",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
+    "cookie-parser": "^1.4.3",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jest": "^21.15.1",
-    "jest": "^22.4.3",
-    "superagent": "^3.8.3"
+    "jest": "^23.1.0",
+    "superagent": "^3.8.3",
+    "uuid": "^3.2.1"
   },
   "dependencies": {
     "aws-sdk": "^2.237.1",
